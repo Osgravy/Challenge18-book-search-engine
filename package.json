@@ -8,12 +8,33 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "concurrently \"cd server && npm run build\" \"cd client && npm run build\"",
-    "render-build":"npm install && npm run build"
+    "render-build": "npm install && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Osgravy/Challenge18-book-search-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Osgravy/Challenge18-book-search-engine/issues"
+  },
+  "homepage": "https://github.com/Osgravy/Challenge18-book-search-engine#readme",
+  "dependencies": {
+    "@apollo/client": "^3.13.8",
+    "@apollo/server": "^4.12.1",
+    "@graphql-tools/schema": "^10.0.23",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "@types/react-router-dom": "^5.3.3",
+    "apollo-server-express": "^3.13.0",
+    "graphql": "^16.11.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.1"
   }
 }
