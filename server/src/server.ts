@@ -27,7 +27,7 @@ const startApolloServer = async () => {
     app.use(express.static(path.join(__dirname, '../client/build')));
     
     // Serve the React app for any unknown routes in production
-    app.get('*', (req, res) => {
+    app.get('*', (_, res) => {
       res.sendFile(path.join(__dirname, '../client/build/index.html'));
     });
   }
