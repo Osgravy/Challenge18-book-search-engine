@@ -24,21 +24,17 @@ export const authMiddleware = async ({ req }: { req: Request }) => {
 
   // If no token, throw an authentication error
   if (!token) {
-    throw new GraphQLError('You must be logged in to perform this action', {
-      extensions: {
-        code: 'UNAUTHENTICATED',
-        http: { status: 401 },
-      },
-    });
+   return req
   }
 
   try {
     // Verify the token
     const secretKey = process.env.JWT_SECRET_KEY || '';
-    const decoded = jwt.verify(token, secretKey) as JwtPayload;
+    const decoded = jwt.verify(token, secretKey, {maxAge:"2hr"}) as JwtPayload;
     
     // Return the user data to be used in resolvers
-    return { user: decoded };
+    //return { user: decoded };
+    req.user = decoded; // Attach user data to the request object
   } catch (err) {
     console.error('Invalid token:', err);
     throw new GraphQLError('Invalid or expired token', {
@@ -48,6 +44,7 @@ export const authMiddleware = async ({ req }: { req: Request }) => {
       },
     });
   }
+  return req;
 };
 
 // Updated signToken function (similar to original but typed)
