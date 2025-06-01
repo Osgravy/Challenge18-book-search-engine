@@ -3,8 +3,8 @@ import path from 'node:path';
 import db from './config/connection.js';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
-import { typeDefs, resolvers } from './schemas/index';
-import { authMiddleware } from './services/auth';
+import { typeDefs, resolvers } from './schemas/index.js';
+import { authMiddleware } from './services/auth.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
